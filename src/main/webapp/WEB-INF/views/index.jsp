@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Форум job4j</title>
+    <title>Add Post</title>
 </head>
 <body>
 <div class="container mt-3">
+    <a class="nav-link" href="<c:url value='/post/create'/>">Add Post</a>
     <div class="row">
         <h4>Форум job4j</h4>
     </div>
@@ -22,13 +23,15 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Тема</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Description</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td><c:out value="${post.name}"/></td>
+                    <td><c:out value="${post.desc}"/></td>
                 </tr>
             </c:forEach>
             </tbody>

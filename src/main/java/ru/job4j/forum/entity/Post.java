@@ -1,6 +1,7 @@
 package ru.job4j.forum.entity;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
 public class Post {
@@ -10,9 +11,11 @@ public class Post {
     private String desc;
     private Calendar created;
 
-    public static Post of(String name) {
+    public static Post of(String name, String desc) {
         Post post = new Post();
         post.name = name;
+        post.desc = desc;
+        post.created = new GregorianCalendar();
         return post;
     }
 
