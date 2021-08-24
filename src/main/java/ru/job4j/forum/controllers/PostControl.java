@@ -1,6 +1,7 @@
 package ru.job4j.forum.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.forum.entity.Post;
@@ -15,6 +16,10 @@ public class PostControl {
         this.postService = postService;
     }
 
+    @GetMapping("/create")
+    public String createPost(){
+        return "redirect:/post/create";
+    }
     @PostMapping("/create")
     public String createPost(@ModelAttribute Post post) {
         postService.save(post);

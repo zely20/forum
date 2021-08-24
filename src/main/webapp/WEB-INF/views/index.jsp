@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="container mt-3">
-    <a class="nav-link" href="<c:url value='/post/create'/>">Add Post</a>
+    <a class="nav-link" href="<c:url value='/create'/>">Add Post</a>
     <div class="row">
         <h4>Форум job4j</h4>
     </div>
