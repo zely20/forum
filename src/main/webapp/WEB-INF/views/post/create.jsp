@@ -17,7 +17,7 @@
            <h2>Topic title</h2>
        <td><input type="text" name="name"></td>
            <h3>Message</h3>
-           <p><textarea rows="10" cols="45" name="desc"></textarea></p>
+           <p><textarea rows="10" cols="45" name="description"></textarea></p>
        <td colspan='2'><input name="submit" type="submit" value="submit" class="btn btn-primary"/></td>
        </form>
    </div>

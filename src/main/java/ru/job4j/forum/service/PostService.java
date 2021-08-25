@@ -1,43 +1,48 @@
 package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.forum.entity.Post;
+import ru.job4j.forum.repository.PostRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class PostService {
-    private static AtomicInteger id = new AtomicInteger(0);
-    private final List<Post> posts = new ArrayList<>();
 
-    public PostService() {
+    private final PostRepository postRepository;
+
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 
     public List<Post> getAll() {
-        return posts;
+        List<Post> result = new ArrayList<>();
+        postRepository.findAll().forEach(result::add);
+        return result;
     }
 
-    public Integer save(Post post) {
+    public Post save(Post post) {
         if(post != null) {
-            post.setId(id.getAndIncrement());
-            posts.add(post);
+            Post postForSave = Post.of(post.getName(), post.getDescription());
+            return postRepository.save(postForSave);
         }
-        return id.get();
+        return null;
     }
 
     public void deleteTopic(Integer id) {
-        posts.remove(id);
+        postRepository.deleteById(id);
     }
 
     public Post findById(Integer id) {
-        return posts.get(id);
+        return postRepository.findById(id).get();
     }
 
     public void update(Post post) {
         Post postFromBd = findById(post.getId());
         postFromBd.setName(post.getName());
-        postFromBd.setDesc(post.getDesc());
+        postFromBd.setDescription(post.getDescription());
+        postRepository.save(postFromBd);
     }
 }

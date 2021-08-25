@@ -33,7 +33,7 @@
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td><c:out value="${post.name}"/></td>
-                    <td><c:out value="${post.desc}"/></td>
+                    <td><c:out value="${post.description}"/></td>
                     <td><a href="<c:url value='/edit?id=${post.id}'/>">Edit topic</a></td>
                     <td><a href="<c:url value='/delete?id=${post.id}'/>">Delete</a></td>
                 </tr>

@@ -1,20 +1,25 @@
 package ru.job4j.forum.entity;
 
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
+@Entity
+@Table(name = "posts")
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String desc;
+    private String description;
     private Calendar created;
 
     public static Post of(String name, String desc) {
         Post post = new Post();
         post.name = name;
-        post.desc = desc;
+        post.description = desc;
         post.created = new GregorianCalendar();
         return post;
     }
@@ -35,12 +40,12 @@ public class Post {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Calendar getCreated() {
@@ -58,12 +63,12 @@ public class Post {
         Post post = (Post) o;
         return id == post.id &&
                 Objects.equals(name, post.name) &&
-                Objects.equals(desc, post.desc) &&
+                Objects.equals(description, post.description) &&
                 Objects.equals(created, post.created);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, created);
+        return Objects.hash(id, name, description, created);
     }
 }

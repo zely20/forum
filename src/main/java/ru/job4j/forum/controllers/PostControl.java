@@ -40,4 +40,11 @@ public class PostControl {
         postService.update(post);
         return "redirect:/index";
     }
+
+    @PostMapping("/delete")
+    public String deletePost( @RequestParam("id") Integer id) {
+        postService.deleteTopic(id);
+        return "redirect:/index";
+    }
+
 }
