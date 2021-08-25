@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Add Post</title>
+    <title>Forum</title>
 </head>
 <body>
 <div class="container mt-3">
@@ -25,6 +25,8 @@
             <tr>
                 <th scope="col">Topic</th>
                 <th scope="col">Description</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +34,8 @@
                 <tr>
                     <td><c:out value="${post.name}"/></td>
                     <td><c:out value="${post.desc}"/></td>
+                    <td><a href="<c:url value='/edit?id=${post.id}'/>">Edit topic</a></td>
+                    <td><a href="<c:url value='/delete?id=${post.id}'/>">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>
