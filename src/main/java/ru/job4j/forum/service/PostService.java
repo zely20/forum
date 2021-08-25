@@ -1,7 +1,6 @@
 package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.forum.entity.Post;
 import ru.job4j.forum.repository.PostRepository;
 

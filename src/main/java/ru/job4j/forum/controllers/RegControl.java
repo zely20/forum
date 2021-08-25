@@ -4,13 +4,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.forum.entity.User;
+import ru.job4j.forum.service.UserService;
 
 import javax.validation.ConstraintViolationException;
 
 @Controller
 public class RegControl {
 
-    public RegControl() {
+    private final UserService userService;
+
+    public RegControl(UserService userService) {
+        this.userService = userService;
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
@@ -31,6 +35,7 @@ public class RegControl {
 
     @PostMapping("/reg")
     public String save(@ModelAttribute User user) {
+        userService.saveUser(user);
         return "redirect:/login";
     }
 }
