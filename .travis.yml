@@ -1,0 +1,18 @@
+language: java
+sudo: false
+
+install: true
+
+script: mvn clean package -DskipTests=true
+
+notifications:
+  email:
+    recipients:
+      -zely1984@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
+deploy:
+  provider: heroku
+  api_key:
+    secure:
+  app: obscure-tor-53327
