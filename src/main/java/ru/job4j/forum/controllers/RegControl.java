@@ -1,12 +1,11 @@
 package ru.job4j.forum.controllers;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.forum.entity.User;
 import ru.job4j.forum.service.UserService;
-
-import javax.validation.ConstraintViolationException;
 
 @Controller
 public class RegControl {
@@ -17,7 +16,7 @@ public class RegControl {
         this.userService = userService;
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
+    @ExceptionHandler(DataIntegrityViolationException.class)
     public String userAlreadyReg() {
         return "redirect:/reg?regError=true";
     }
